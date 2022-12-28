@@ -12,6 +12,10 @@ Run `nx serve store` for a dev server. Navigate to http://localhost:4200/. The a
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
+## list all available plugins
+
+Run `nx list ` to see all plugins
+
 ## Remote caching
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.

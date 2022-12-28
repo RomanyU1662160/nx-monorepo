@@ -1,17 +1,12 @@
 import { render } from '@testing-library/react';
 
-import App from './app';
+import Homepage from './homepage';
 
-describe('App', () => {
+describe('Homepage', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<App />);
+    const { baseElement, getByTestId } = render(<Homepage />);
     expect(baseElement).toBeTruthy();
-  });
-  it('display the list of games', () => {
-    const { getByTestId } = render(<App />);
-
     const gamesList = getByTestId('games-list');
     expect(gamesList).toBeTruthy();
-
   });
 });
