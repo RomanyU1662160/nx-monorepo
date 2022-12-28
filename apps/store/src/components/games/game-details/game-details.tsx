@@ -1,15 +1,31 @@
-import { games } from '../../../mock-data/games';
+
 import { useParams } from 'react-router-dom';
 import styles from './game-details.module.scss';
 import { Grid } from '@mui/material';
+import { Game } from '@egghead-nx/shared-types';
+import { useCallback, useEffect, useState } from 'react';
 
 
 /* eslint-disable-next-line */
 export interface GameDetailsProps { }
 
 export function GameDetails(props: GameDetailsProps) {
+
   const { gameId } = useParams();
-  const game = games.find(({ id }) => gameId === id)
+
+  const [game, setGame] = useState<Game>();
+
+  const fetchGame = useCallback(async () => {
+    const response = await fetch(`/api/games/${gameId}`);
+    const data = await response.json();
+    setGame(data);
+
+  }, [gameId])
+
+  useEffect(() => {
+    fetchGame();
+  }, [gameId, fetchGame])
+
   if (!game) {
     return <div>Game not found</div>
   }
@@ -18,7 +34,7 @@ export function GameDetails(props: GameDetailsProps) {
       <Grid item xs={12} sm={12} md={6} lg={6} >
         <img src={game.image} alt={game.name} />
       </Grid>
-      <Grid xs={12} sm={12} md={6} lg={6} >
+      <Grid item xs={12} sm={12} md={6} lg={6} >
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <h1> {game.name} details!</h1>
         </Grid>
