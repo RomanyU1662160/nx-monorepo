@@ -3,3 +3,5 @@
 
 nx lint store
 nx test store
+nx affected:lint --base=origin/master
+nx affected:test --all
