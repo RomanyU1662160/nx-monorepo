@@ -7,7 +7,9 @@
     "prepare": "husky install",
     "start:api": "nx serve api",
     "start:all": "nx run-many --target=serve --all --parallel",
-    "serve:all": "nx serveAll store"
+    "serve:all": "nx serveAll store",
+    "affected:all": "nx affected:test --all",
+    "affected": "nx affected --target=test --base=master~2 --head=master"
   },
   "private": true,
   "devDependencies": {
