@@ -2,4 +2,3 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 nx test store
-nx e2e store-e2e
