@@ -32,6 +32,8 @@ export function Homepage(props: HomepageProps) {
     fetchGames();
     setIsLoading(false)
   }, [fetchGames])
+
+  if (isLoading) return (<div>Loading...</div>)
   return (
     <div className={styles['container']} data-testid="games-page">
       <GamesList games={games} />

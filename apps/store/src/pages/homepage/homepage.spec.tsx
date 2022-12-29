@@ -1,7 +1,5 @@
 import { Game } from '@egghead-nx/shared-types';
 import { render, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
-import { games } from '../../mock-data/games'
 import { BrowserRouter } from 'react-router-dom';
 import Homepage from './homepage';
 
