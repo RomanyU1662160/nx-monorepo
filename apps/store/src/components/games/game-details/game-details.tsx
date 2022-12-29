@@ -30,7 +30,7 @@ export function GameDetails(props: GameDetailsProps) {
     return <div>Game not found</div>
   }
   return (
-    <Grid container spacing={3} className={styles.gameDetails}>
+    <Grid container spacing={3} className={styles.gameDetails} data-testid="game-details">
       <Grid item xs={12} sm={12} md={6} lg={6} >
         <img src={game.image} alt={game.name} />
       </Grid>

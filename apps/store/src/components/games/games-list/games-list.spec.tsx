@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { Game } from "@egghead-nx/shared-types";
 
 import GamesList from './games-list';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('GamesList', () => {
   const mockGames: Game[] = [
@@ -24,7 +25,11 @@ describe('GamesList', () => {
 
   ]
   it('should render successfully', () => {
-    const { baseElement, getByText } = render(<GamesList games={mockGames} />);
+    const { baseElement, getByText } = render(
+      <BrowserRouter>
+        <GamesList games={mockGames} />
+      </BrowserRouter>
+    );
     expect(baseElement).toBeTruthy();
     expect(getByText(mockGames[0].name)).toBeTruthy();
     expect(getByText(mockGames[1].name)).toBeTruthy();

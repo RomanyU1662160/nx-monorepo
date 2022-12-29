@@ -62,7 +62,7 @@ export function Header({ pages, settings }: HeaderProps) {
               textDecoration: 'none',
             }}
           >
-            Games Store
+            <span> Games Store</span>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -126,6 +126,7 @@ export function Header({ pages, settings }: HeaderProps) {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                id={page}
               >
                 {page}
               </Button>

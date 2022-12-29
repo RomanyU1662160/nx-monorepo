@@ -33,7 +33,7 @@ export function Homepage(props: HomepageProps) {
     setIsLoading(false)
   }, [fetchGames])
   return (
-    <div className={styles['container']}>
+    <div className={styles['container']} data-testid="games-page">
       <GamesList games={games} />
     </div>
   );

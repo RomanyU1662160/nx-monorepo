@@ -1,12 +1,40 @@
-import { render } from '@testing-library/react';
-
+import { Game } from '@egghead-nx/shared-types';
+import { render, waitFor } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import { games } from '../../mock-data/games'
+import { BrowserRouter } from 'react-router-dom';
 import Homepage from './homepage';
 
+function mockFetch(data: Game[]) {
+  return jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => data
+    })
+  );
+}
+
+
 describe('Homepage', () => {
-  it('should render successfully', () => {
-    const { baseElement, getByTestId } = render(<Homepage />);
+  beforeEach(() => {
+    window.fetch = mockFetch([]);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
+  it('should render successfully', async () => {
+
+
+    const { baseElement, findByTestId } = render(
+      <BrowserRouter>
+        <Homepage />
+      </BrowserRouter>
+    )
+    // use waitFor to solve the issue of update the state is not wrapped in act
+    const gamesList2 = await waitFor(() => findByTestId('games-page'));
     expect(baseElement).toBeTruthy();
-    const gamesList = getByTestId('games-list');
-    expect(gamesList).toBeTruthy();
+    expect(gamesList2).toBeTruthy();
   });
 });
